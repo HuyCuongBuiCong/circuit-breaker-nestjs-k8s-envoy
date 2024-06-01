@@ -4,10 +4,7 @@
   "description": "To create nestjs with helm",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cs": "node create-service.js",
-    "deploy": "node deploy.js",
-    "t": "node test-circuit-breaker.js"
+    "test": "node test-circuit-breaker.js"
   },
   "author": "kelvinbz",
   "license": "ISC",
