@@ -1,0 +1,19 @@
+{
+  "name": "circuit-breake-nestjs-k8s-envoy",
+  "version": "1.0.0",
+  "description": "To create nestjs with helm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cs": "node create-service.js",
+    "deploy": "node deploy.js",
+    "t": "node test-circuit-breaker.js"
+  },
+  "author": "kelvinbz",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.13.0",
+    "axios": "^1.7.2",
+    "typescript": "^5.4.5"
+  }
+}

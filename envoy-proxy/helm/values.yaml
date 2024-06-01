@@ -1,0 +1,12 @@
+replicaCount: 1
+
+image:
+  repository: envoyproxy/envoy
+  tag: dev-d69544eec9f285b9fe05548ea18b5f3dc75fb087
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 10000
+
+configMapName: envoy-config

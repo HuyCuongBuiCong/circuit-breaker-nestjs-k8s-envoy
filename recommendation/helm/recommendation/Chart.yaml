@@ -1,0 +1,5 @@
+apiVersion: v2
+name: recommendation
+description: A Helm chart for recommendation
+version: 0.1.0
+appVersion: "1.0"
