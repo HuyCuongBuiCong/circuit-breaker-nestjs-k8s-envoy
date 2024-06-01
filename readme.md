@@ -3,7 +3,7 @@
 
 This repository contains a sample implementation of a product recommendation service that leverages a circuit breaker pattern to manage and mitigate service failures. The project is built using NestJS, with the `opossum` library for the circuit breaker.
 
-Full article on the circuit breaker pattern [here](#https://knowledge1page.com/managing-overwhelmed-microservices-in-e-commerce-with-circuit-breakers-in-nestjs-5c44495f1376).
+Full article on the circuit breaker pattern [here](https://knowledge1page.com/managing-overwhelmed-microservices-in-e-commerce-with-circuit-breakers-in-nestjs-5c44495f1376).
 ## Project Structure
 
 The project consists of main services:
@@ -261,5 +261,5 @@ Log rerutlt from ```ProductRecommendationCircuitBreakerService```
 
 The circuit breaker implementation enhances the robustness and reliability of the product recommendation service. It provides a resilient system capable of handling intermittent failures gracefully, ensuring continuous service availability and a better user experience.
 
-For more details, refer to the article on the circuit breaker pattern [here](#https://knowledge1page.com/managing-overwhelmed-microservices-in-e-commerce-with-circuit-breakers-in-nestjs-5c44495f1376).
+For more details, refer to the article on the circuit breaker pattern [here](https://knowledge1page.com/managing-overwhelmed-microservices-in-e-commerce-with-circuit-breakers-in-nestjs-5c44495f1376).
 
