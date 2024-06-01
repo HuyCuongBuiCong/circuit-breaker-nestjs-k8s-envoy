@@ -1,14 +1,17 @@
 # Circuit Breaker Pattern
+![circuit-breaker.png](img%2Fcircuit-breaker.png)
 
 This repository contains a sample implementation of a product recommendation service that leverages a circuit breaker pattern to manage and mitigate service failures. The project is built using NestJS, with the `opossum` library for the circuit breaker.
 
+Full article on the circuit breaker pattern [here](#https://knowledge1page.com/managing-overwhelmed-microservices-in-e-commerce-with-circuit-breakers-in-nestjs-5c44495f1376).
 ## Project Structure
 
-The project consists of two main services:
+The project consists of main services:
+- envoy proxy
 - product service
-- recommendation service
+- recommendation service : This service simulates product recommendations with random failures to demonstrate the circuit breaker's functionality.
 
-To explain the circuit breaker pattern, we will focus on the recommendation service, which simulates product recommendations with random failures.
+To explain the circuit breaker pattern, we will focus on the recommendation service only, which simulates product recommendations with random failures.
 
 If you want to see the full project structure, you can clone the repository and explore the code and run in your local kubernetes cluster.
 
@@ -28,6 +31,37 @@ Go to recommendation service folder and run the following commands:
    ```
 
 ## Services
+
+```mermaid
+classDiagram
+    class ProductRecommendationService {
+        +fetchRecommendations()
+        +defaultRecommendations()
+    }
+
+    class Cache {
+        +get(key: string): Promise<any>
+        +set(key: string, value: any): Promise<void>
+    }
+
+    class ProductRecommendationCircuitBreakerService {
+        -circuitBreaker: CircuitBreaker
+        +constructor(productRecommendationService: ProductRecommendationService, cacheManager: Cache)
+        +fetchProductRecommendations(): Promise<any>
+        -logCircuitStatus(status: string): void
+    }
+
+    class CircuitBreaker {
+        +fire(): Promise<any>
+        +fallback(fallbackFunction: Function): void
+        +on(event: string, callback: Function): void
+        +stats: object
+    }
+
+    ProductRecommendationCircuitBreakerService --> ProductRecommendationService: uses
+    ProductRecommendationCircuitBreakerService --> Cache: uses
+    ProductRecommendationCircuitBreakerService --> CircuitBreaker: contains
+```
 
 ### RecommendationService
 
@@ -227,5 +261,5 @@ Log rerutlt from ```ProductRecommendationCircuitBreakerService```
 
 The circuit breaker implementation enhances the robustness and reliability of the product recommendation service. It provides a resilient system capable of handling intermittent failures gracefully, ensuring continuous service availability and a better user experience.
 
-For more details, refer to the article on the circuit breaker pattern [here](#). (Link to your article)
+For more details, refer to the article on the circuit breaker pattern [here](#https://knowledge1page.com/managing-overwhelmed-microservices-in-e-commerce-with-circuit-breakers-in-nestjs-5c44495f1376).
 
