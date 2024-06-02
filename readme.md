@@ -34,20 +34,16 @@ Go to recommendation service folder and run the following commands:
 
 ```mermaid
 classDiagram
-    class ProductRecommendationService {
+    class RecommendationService {
         +fetchRecommendations()
         +defaultRecommendations()
     }
 
-    class Cache {
-        +get(key: string): Promise<any>
-        +set(key: string, value: any): Promise<void>
-    }
-
-    class ProductRecommendationCircuitBreakerService {
+ 
+    class RecommendationCircuitBreakerService {
         -circuitBreaker: CircuitBreaker
-        +constructor(productRecommendationService: ProductRecommendationService, cacheManager: Cache)
-        +fetchProductRecommendations(): Promise<any>
+        +constructor(RecommendationService: RecommendationService, cacheManager: Cache)
+        +fetchRecommendations(): Promise<any>
         -logCircuitStatus(status: string): void
     }
 
@@ -58,9 +54,9 @@ classDiagram
         +stats: object
     }
 
-    ProductRecommendationCircuitBreakerService --> ProductRecommendationService: uses
-    ProductRecommendationCircuitBreakerService --> Cache: uses
-    ProductRecommendationCircuitBreakerService --> CircuitBreaker: contains
+    RecommendationCircuitBreakerService --> RecommendationService: uses
+ 
+    RecommendationCircuitBreakerService --> CircuitBreaker: contains
 ```
 
 ### RecommendationService
